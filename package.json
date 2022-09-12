@@ -1,0 +1,14 @@
+{
+  "name": "wema-qa",
+  "version": "1.0.0",
+  "description": "for web automation purpose ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Olajide",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.7.0"
+  }
+}
