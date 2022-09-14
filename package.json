@@ -4,7 +4,8 @@
   "description": "for web automation purpose ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-runner": "npx cypress open",
+    "test-terminal": "npx cypress run"
   },
   "author": "Olajide",
   "license": "ISC",
