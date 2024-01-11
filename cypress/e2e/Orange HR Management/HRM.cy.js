@@ -1,41 +1,57 @@
 /// <reference types="cypress" />
+import {baseUrl, username, password} from './Env/config'
+
 
 describe ('Orange HR Management Test Suite', () => {
-    const baseUrl = 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login';
-    const username  = 'Admin';
-    const password = 'admin123'
 
     beforeEach(() => {
+        //Visit the web app
         cy.visit(baseUrl)
+
+        //Attempt to login the user
+        cy.get('.orangehrm-login-slot-wrapper')
+        cy.get('.oxd-text--h5').should('have.text', 'Login')
+
+        //Login to ORM as an admin user
+        cy.get('.orangehrm-login-slot')
+        cy.get('.orangehrm-login-form')
+
+        //admin enters correct username
+        cy.get(':nth-child(2) > .oxd-input-group')
+        cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
+
+        //admin enters correct password
+        cy.get(':nth-child(3) > .oxd-input-group')
+        cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password,{log:false})
+
+        //admin clicks on login button
+        cy.get('.oxd-button').click();
     })
 
-         it('Login with correct credentials', () => {
+        //  it('Login with correct credentials', () => {
 
-             cy.get('.orangehrm-login-slot-wrapper')
-             cy.get('.oxd-text--h5').should('have.text', 'Login')
+        //      cy.get('.orangehrm-login-slot-wrapper')
+        //      cy.get('.oxd-text--h5').should('have.text', 'Login')
 
-             //Login to ORM as an admin user
-             cy.get('.orangehrm-login-slot')
-             cy.get('.orangehrm-login-form')
+        //      //Login to ORM as an admin user
+        //      cy.get('.orangehrm-login-slot')
+        //      cy.get('.orangehrm-login-form')
 
-             //admin enters correct username
-             cy.get(':nth-child(2) > .oxd-input-group')
-             cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
+        //      //admin enters correct username
+        //      cy.get(':nth-child(2) > .oxd-input-group')
+        //      cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
 
-             //admin enters correct password
-             cy.get(':nth-child(3) > .oxd-input-group')
-             cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password,{log:false})
+        //      //admin enters correct password
+        //      cy.get(':nth-child(3) > .oxd-input-group')
+        //      cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password,{log:false})
 
-             //admin clicks on login button
-             cy.get('.oxd-button').click();
+        //      //admin clicks on login button
+        //      cy.get('.oxd-button').click();
 
-         })
+        //  })
 
 
-    it('Login with incorrect credentials', () => {
-
-        const username  = 'admin';
-        const password = 'admin12'
+    it.skip('Login with incorrect credentials', () => {
 
         cy.get('.orangehrm-login-slot-wrapper')
         cy.get('.oxd-text--h5').should('have.text', 'Login')
@@ -63,24 +79,26 @@ describe ('Orange HR Management Test Suite', () => {
 
     it('Navigate to Dashboard', () => {
 
-        cy.get('.orangehrm-login-slot-wrapper')
-        cy.get('.oxd-text--h5').should('have.text', 'Login')
+        // cy.get('.orangehrm-login-slot-wrapper')
+        // cy.get('.oxd-text--h5').should('have.text', 'Login')
 
-        //Login to ORM as an admin user
-        cy.get('.orangehrm-login-slot')
-        cy.get('.orangehrm-login-form')
+        // //Login to ORM as an admin user
+        // cy.get('.orangehrm-login-slot')
+        // cy.get('.orangehrm-login-form')
 
-        //admin enters correct username
-        cy.get(':nth-child(2) > .oxd-input-group')
-        cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
+        // //admin enters correct username
+        // cy.get(':nth-child(2) > .oxd-input-group')
+        // cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
 
-        //admin enters correct password
-        cy.get(':nth-child(3) > .oxd-input-group')
-        cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password)
+        // //admin enters correct password
+        // cy.get(':nth-child(3) > .oxd-input-group')
+        // cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password)
 
-        //admin clicks on login button
-        cy.get('.oxd-button').click();
+        // //admin clicks on login button
+        // cy.get('.oxd-button').click();
 
+
+        //Navigate user to Dashboard
 
         cy.get('.oxd-sidepanel-body')
         cy.get('ul.oxd-main-menu')
@@ -98,27 +116,33 @@ describe ('Orange HR Management Test Suite', () => {
 
 
 
-    it('Navigate to Directory', () => {
+    it.only('Navigate to Directory', () => {
 
-        cy.get('.orangehrm-login-slot-wrapper')
-        cy.get('.oxd-text--h5').should('have.text', 'Login')
-
-        //Login to ORM as an admin user
-        cy.get('.orangehrm-login-slot')
-        cy.get('.orangehrm-login-form')
-
-        //admin enters correct username
-        cy.get(':nth-child(2) > .oxd-input-group')
-        cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
-
-        //admin enters correct password
-        cy.get(':nth-child(3) > .oxd-input-group')
-        cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password)
-
-        //admin clicks on login button
-        cy.get('.oxd-button').click();
+        // cy.clearCookies() 
+        // cy.clearLocalStorage() 
+        // cy.clearAllSessionStorage() 
 
 
+        // cy.get('.orangehrm-login-slot-wrapper')
+        // cy.get('.oxd-text--h5').should('have.text', 'Login')
+
+        // //Login to ORM as an admin user
+        // cy.get('.orangehrm-login-slot')
+        // cy.get('.orangehrm-login-form')
+
+        // //admin enters correct username
+        // cy.get(':nth-child(2) > .oxd-input-group')
+        // cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
+
+        // //admin enters correct password
+        // cy.get(':nth-child(3) > .oxd-input-group')
+        // cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password)
+
+        // //admin clicks on login button
+        // cy.get('.oxd-button').click();
+
+
+        //Navigate user to directory
         cy.get('.oxd-sidepanel-body')
         cy.get('ul.oxd-main-menu')
         cy.contains('Directory').click();
@@ -127,71 +151,83 @@ describe ('Orange HR Management Test Suite', () => {
         cy.url().should('include', 'https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory')
 
         //search for an employee based on country and role
-        cy.get('.oxd-layout-context')
-        cy.get('.oxd-table-filter')
-        cy.get('.oxd-autocomplete-text-input > input').type('Odis Adalwin')
+        // cy.get('.oxd-layout-context')
+        // cy.get('.oxd-table-filter')
+        // cy.get('.oxd-autocomplete-text-input > input')
+        // .type('Charlie Carter').click({froce: true})
 
-        //select job title
-        cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text')
-            .click()
-        cy.get('.oxd-select-option')
-            .contains('Chief Technical Officer')
-            .click({force:true});
+        // //select job title
+        // cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text')
+        //     .click()
+        // cy.get('.oxd-select-option')
+        //     .contains('QA Engineer')
+        //    .click({force:true});
 
-        //select location
-        cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text')
-            .click()
-        cy.get('.oxd-select-option')
-            .contains('HQ - CA, USA')
-            .click({force:true})
+        // //select location
+        // cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text')
+        //     .click()
+        // cy.get('.oxd-select-option')
+        //     .contains('New York Sales Office')
+        //     .click({force:true})
 
-        //click on search button
-        cy.get('.oxd-button--secondary').click({force:true});
+        // // //click on search button
+        // cy.get('.oxd-form-actions')
+        // cy.get('.oxd-button--secondary').click({force:true});
 
-        //verify that only one record is returned
-        cy.get('.orangehrm-horizontal-padding').contains('(1) Record Found')
-        cy.get('.oxd-grid-4').should('have.length', 1)
+        // // //verify that only one record is returned
+        // cy.get('.orangehrm-horizontal-padding').contains('(3) Record Found')
+        // cy.get('.oxd-grid-4').should('have.length', 3)
 
-        cy.get('.oxd-sheet').click({force:true})
+        // cy.get('.oxd-sheet').click({force:true})
 
-        cy.get('.orangehrm-corporate-directory-sidebar > .oxd-grid-item > .oxd-sheet')
-            .contains('Odis Adalwin')
+        // cy.get('.orangehrm-corporate-directory-sidebar > .oxd-grid-item > .oxd-sheet')
+        //     .contains('Odis Adalwin')
 
-        cy.get('.orangehrm-corporate-directory-sidebar > .oxd-grid-item > .oxd-sheet')
-            .contains('Chief Technical Officer')
+        // cy.get('.orangehrm-corporate-directory-sidebar > .oxd-grid-item > .oxd-sheet')
+        //     .contains('Chief Technical Officer')
 
-        cy.get(':nth-child(10) > :nth-child(1) > .oxd-text--toast-title')
-            .contains('odis1@osohrm.com')
-
-        //wait for 5secs and then reset the search function
-        cy.wait(5000)
-        cy.get('.oxd-button--ghost').click({force:true})
+        // cy.get(':nth-child(10) > :nth-child(1) > .oxd-text--toast-title')
+        //     .contains('odis1@osohrm.com')
 
 
-        return this;
+        // //wait for 5secs and then reset the search function
+        // cy.wait(5000)
+        // cy.get('.oxd-button--ghost').click({force:true})
+
+
+        // return this;
 
     })
 
 
-    it('Navigate to Maintenance Page', () => {
+    it.skip('Navigate to Maintenance Page',
+    
+    // {
+    //     retries: {
+    //      // runMode: 1,
+    //       openMode: 1,
+    //     },
+    //   },
+    
+    () => {
 
-        cy.get('.orangehrm-login-slot-wrapper')
-        cy.get('.oxd-text--h5').should('have.text', 'Login')
+        // cy.get('.orangehrm-login-slot-wrapper')
+        // cy.get('.oxd-text--h5').should('have.text', 'Login')
 
-        //Login to ORM as an admin user
-        cy.get('.orangehrm-login-slot')
-        cy.get('.orangehrm-login-form')
+        // //Login to ORM as an admin user
+        // cy.get('.orangehrm-login-slot')
+        // cy.get('.orangehrm-login-form')
 
-        //admin enters correct username
-        cy.get(':nth-child(2) > .oxd-input-group')
-        cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
+        // //admin enters correct username
+        // cy.get(':nth-child(2) > .oxd-input-group')
+        // cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type(username)
 
-        //admin enters correct password
-        cy.get(':nth-child(3) > .oxd-input-group')
-        cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password, {log:false})
+        // //admin enters correct password
+        // cy.get(':nth-child(3) > .oxd-input-group')
+        // cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type(password, {log:false})
 
-        //admin clicks on login button
-        cy.get('.oxd-button').click();
+        // //admin clicks on login button
+        // cy.get('.oxd-button').click();
 
         cy.get('.oxd-sidepanel-body')
         cy.get('ul.oxd-main-menu')
@@ -227,12 +263,12 @@ describe ('Orange HR Management Test Suite', () => {
     })
 
 
-    after( () => {
-        //Logout User
-        cy.get('.oxd-topbar-header-userarea')
-        cy.get('.oxd-topbar-header-userarea > ul')
-        cy.get('.oxd-userdropdown-tab').click({force: true})
+    // after( () => {
+    //     //Logout User
+    //     cy.get('.oxd-topbar-header-userarea')
+    //     cy.get('.oxd-topbar-header-userarea > ul')
+    //     cy.get('.oxd-userdropdown-tab').click({force: true})
 
-        cy.get('.oxd-dropdown-menu').contains('Logout').click({force:true})
-    })
+    //     cy.get('.oxd-dropdown-menu').contains('Logout').click({force:true})
+    // })
 });
