@@ -4,12 +4,13 @@
   "description": "for web automation purpose ",
   "main": "index.js",
   "scripts": {
-    "test-runner": "npx cypress open",
-    "test-terminal": "npx cypress run"
+    "cypress-local": "npx cypress run --browser chrome --headless",
+    "cypress-ci": "npx cypress run"
   },
   "author": "Olajide",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^10.7.0"
+
   }
 }
